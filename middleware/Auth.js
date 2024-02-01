@@ -10,7 +10,7 @@ export const userLogin = (req, res,next) => {
     if(error){
       throw error;
     }
-    if(results.rows.length > 0){
+    if(results.rows.length > 0){ 
       const user = results.rows[0];
       if(bcrypt.compareSync(password,user.password)){
         const token = jwt.sign({user_id:user.id,user_name:user.user_name},process.env.JWT_SECRET,{expiresIn:'1h'});
