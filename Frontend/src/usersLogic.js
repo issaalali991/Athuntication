@@ -1,6 +1,5 @@
 
 import axios from "axios";
-;
 
 
 export const getUser = async (
@@ -10,7 +9,7 @@ export const getUser = async (
 
 ) => {
   try {
-    const res = await axios.post("http://localhost:4000/users/login", {
+    const res = await axios.post("https://authentication-form-u8no.onrender.com/users/login", {
       user_name: user,
       password: pass,
     });
@@ -37,7 +36,7 @@ export const getUser = async (
   setCookie
 ) => {
   try {
-    const res = await axios.post("http://localhost:4000/users/register", {
+    const res = await axios.post("https://authentication-form-u8no.onrender.com/users/register", {
       user_name: user,
       password: pass,
     });
