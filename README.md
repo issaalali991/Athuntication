@@ -1,6 +1,6 @@
 # Autentication Form 
 
-Welcome to your project! This repository contains just Autentication Form .
+Welcome to your project! This repository contains just Autentication Form by using React and NodeJs and Database SQL .
 
 ## Demo
 
