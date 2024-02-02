@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import "./App.css";
+import Register from "./components/Register";
+import Login from "./components/Login";
+import { Cookies, useCookies } from "react-cookie";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const[cookies, setCookie, removeCookie] = useCookies(['access_token']);
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <h1 className="text-3xl font-bold mb-6 text-center text-blue-500 ">
+        
+        {
+          localStorage.getItem('user')? (' Welcome, ' + localStorage.getItem('user') + '!') :'Hello world!'
+        }
+       
+      </h1>
+       
+      <br />
+    
+      {
+        cookies.access_token ? 
+        <button 
+          className="bg-red-500 text-white rounded-md px-2 py-1 mt-3
+          hover:bg-red-600 transition ml-12"
+          onClick={() => {removeCookie('access_token')
+          window.localStorage.removeItem('userID')
+          window.localStorage.removeItem('user')
+          window.location.reload()
+        }}
+        >
+          Logout
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        : 
+        (
+          <>
+          
+          <Register/>
+          <br />
+          <Login/>
+          </>
+        )
+      }
+     
     </>
-  )
+  );
 }
 
-export default App
+export default App;
