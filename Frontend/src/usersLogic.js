@@ -29,9 +29,9 @@ export const getUser = async (user, pass, setCookie) => {
 };
 
 export const createUser = async (user, pass, setCookie) => {
-  console.log(API_BASE_URL);
+  
   try {
-    const res = await axios.post(`${API_BASE_URL}/register`, {
+    const res = await axios.post(`${API_BASE_URL}/users/register`, {
       user_name: user,
       password: pass,
     });
